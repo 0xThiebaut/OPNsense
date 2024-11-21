@@ -66,6 +66,7 @@
                 <updatefreq type="NumericField">
                     <ValidationMessage>Days and hours should be numeric values or left empty.</ValidationMessage>
                 </updatefreq>
+                <auth type="TextField"/>
                 <content type=".\AliasContentField"/>
                 <categories type="ModelRelationField">
                     <Model>

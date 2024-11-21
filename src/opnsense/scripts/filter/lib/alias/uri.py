@@ -34,10 +34,11 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class UriParser(BaseContentParser):
 
-    def __init__(self, timeout=120, ssl_no_verify=False, **kwargs):
+    def __init__(self, timeout=120, ssl_no_verify=False, auth=None, **kwargs):
         super().__init__(**kwargs)
         self._timeout = timeout
         self._ssl_no_verify = ssl_no_verify
+        self._auth = auth
 
     def iter_addresses(self, url):
         """ return unparsed (raw) alias entries without dependencies
@@ -51,6 +52,8 @@ class UriParser(BaseContentParser):
         req_opts['timeout'] = self._timeout
         if self._ssl_no_verify:
             req_opts['verify'] = False
+        if self._auth:
+            req_opts['headers'] = {'Authorization': self._auth}
 
         # fetch data
         try:

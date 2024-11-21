@@ -327,6 +327,7 @@
         $("#alias\\.type").change(function(){
             $(".alias_type").hide();
             $("#row_alias\\.updatefreq").hide();
+            $("#row_alias\\.auth").hide();
             $("#row_alias\\.interface").hide();
             $("#copy-paste").hide();
             switch ($(this).val()) {
@@ -358,6 +359,7 @@
                     break;
                 case 'urltable':
                     $("#row_alias\\.updatefreq").show();
+                    $("#row_alias\\.auth").show();
                     /* FALLTHROUGH */
                 default:
                     $("#alias_type_default").show();
@@ -827,6 +829,25 @@
                                     </td>
                                     <td>
                                         <span class="help-block" id="help_block_alias.updatefreq"></span>
+                                    </td>
+                                </tr>
+                                <tr id="row_alias.auth">
+                                    <td>
+                                        <div class="control-label" id="control_label_alias.auth">
+                                            <a id="help_for_alias.auth" href="#" class="showhelp"><i class="fa fa-info-circle"></i></a>
+                                            <b>{{lang._('Authorization')}}</b>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" size="50" id="alias.auth">
+                                        <div class="hidden" data-for="help_for_alias.auth">
+                                            <small>
+                                                {{lang._('The authorization header passed along during the refresh. ')}}
+                                            </small>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="help-block" id="help_block_alias.auth"></span>
                                     </td>
                                 </tr>
                                 <tr id="row_alias.content">

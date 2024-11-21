@@ -60,7 +60,8 @@ class Alias(object):
             'ssl_no_verify': ssl_no_verify,
             'timeout': timeout,
             'interface': None,
-            'proto': 'IPv4,IPv6'
+            'proto': 'IPv4,IPv6',
+            'auth': None
         }
         self._ttl = ttl
         self._name = None
@@ -90,6 +91,8 @@ class Alias(object):
                 self._items = set(sorted(subelem.text.split()))
             elif subelem.tag == 'url':
                 self._items = set(sorted(subelem.text.split()))
+            elif subelem.tag == 'auth':
+                self._properties['auth'] = subelem.text
         # we'll save the calculated hash for the unparsed alias content
         self._filename_alias_hash = '/var/db/aliastables/%s.md5.txt' % self._name
         # the generated alias contents, without dependencies
